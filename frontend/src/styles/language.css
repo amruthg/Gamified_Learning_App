@@ -1,0 +1,51 @@
+.language-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url('/img/language.webp'); /* Ensure path is correct */
+  background-size: cover;
+  background-position: center;
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  text-align: center;
+}
+
+.blurred-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.5); /* Translucent black */
+  backdrop-filter: blur(10px); /* Apply blur effect */
+  border-radius: 15px;
+  max-width: 800px;
+  width: 90%; /* Responsive width */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.blurred-box p {
+  font-size: 2.5rem;
+  color: wheat;
+  margin-bottom: 30px;
+}
+
+.language-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.language-buttons button {
+  background-color: #4CAF50;
+  color: wheat;
+  font-size: 1.5rem;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+}
+
+.language-buttons button:hover {
+  background-color: #45a049;
+}

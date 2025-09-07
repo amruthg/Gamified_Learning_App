@@ -1,0 +1,133 @@
+/* Import retro pixel font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Pixelated background with vintage vibe for the auth page */
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: repeating-linear-gradient(
+    45deg,
+    #222,
+    #222 10px,
+    #2a2a2a 10px,
+    #2a2a2a 20px
+  );
+  position: relative;
+}
+
+.auth-page-container:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 153, 0.05),
+    rgba(255, 255, 153, 0.05) 2px,
+    transparent 2px,
+    transparent 4px
+  );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Main auth container styling */
+.auth-page {
+  background-color: #333;
+  padding: 40px 30px;
+  border-radius: 8px;
+  text-align: center;
+  width: 400px;
+
+  box-shadow: 0px 0px 15px rgba(255, 221, 0, 0.4);
+  animation: fadeIn 1s ease-out;
+  transition: transform 0.4s;
+}
+
+/* Page title */
+.auth-page h2 {
+  font-size: 18px;
+  color: #ffdd00;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px #111;
+}
+
+/* Form and input styling */
+.auth-page form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.auth-page input {
+  padding: 10px;
+  border: 2px solid #ffdd00;
+  border-radius: 5px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-family: 'Press Start 2P', sans-serif;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.auth-page input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0px 0px 8px rgba(255, 221, 0, 0.8);
+  transform: scale(1.02);
+}
+
+/* Submit button styling */
+.auth-page button[type="submit"] {
+  background: #ffdd00;
+  color: #222;
+  font-weight: bold;
+  font-family: 'Press Start 2P', sans-serif;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.auth-page button[type="submit"]:hover {
+  background: #ffe680;
+  color: #333;
+  box-shadow: 0 0 12px #ffdd00;
+  transform: scale(1.1);
+}
+
+/* Toggle auth link styling */
+.toggle-auth {
+  margin-top: 20px;
+  color: #ffdd00;
+  font-size: 12px;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: #ffe680;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 1px 1px #111;
+  transition: color 0.3s, transform 0.3s;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.toggle-button:hover {
+  color: #ffdd00;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}

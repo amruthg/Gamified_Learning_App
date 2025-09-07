@@ -1,0 +1,197 @@
+/* Main container styling */
+.lecture-content {
+  padding: 20px;
+  color: #fff;
+  background-image: url('/img/dashboard.png'); /* Path to your image */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+/* Header styling with fade-in effect */
+.lecture-header {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 80%;
+  max-width: 700px;
+  animation: slideIn 0.7s ease;
+  transition: transform 0.3s ease;
+}
+
+/* Body section styling with shadow and smooth scale effect */
+.lecture-body {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 25px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  margin-bottom: 20px;
+  transition: transform 0.3s;
+}
+
+.lecture-body:hover {
+  transform: scale(1.02);
+}
+
+/* Start Game and Game Instructions button container */
+.start-game {
+  margin-bottom: 20px; /* Adds spacing between each button container */
+}
+
+/* Start Game button with hover effect */
+.start-game-button {
+  font-size: 1.2rem;
+  padding: 12px 25px;
+  color: #fff;
+  background-color: #d2a119;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+  margin: 5px; /* Adds spacing between each button */
+}
+
+.start-game-button:hover {
+  background-color: #b58f10;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Questions section */
+.lecture-questions {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 800px;
+  margin-top: 20px;
+  animation: fadeIn 1s ease;
+}
+
+.question-item {
+  margin-bottom: 15px;
+  animation: slideIn 0.5s ease;
+}
+
+.options label {
+  display: block;
+  padding: 5px 0;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 80%;
+  text-align: left;
+  line-height: 1.6;
+  animation: scaleIn 0.3s ease;
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 80vh; /* Limits height to 80% of the viewport for scrolling */
+}
+
+.modal-content h3,
+.modal-content h4 {
+  color: #d2a119;
+  margin-bottom: 10px;
+}
+
+.modal-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 15px;
+}
+
+.modal-content ul li {
+  margin-bottom: 10px;
+}
+
+.close-modal-button {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #d2a119;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.close-modal-button:hover {
+  background-color: #d2a119;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 20px; /* Reduce padding on smaller screens */
+    max-width: 90%; /* Wider modal for small screens */
+    width: 90%;
+  }
+  
+  .modal-content h3,
+  .modal-content h4 {
+    font-size: 1.2rem; /* Slightly smaller headings */
+  }
+
+  .close-modal-button {
+    padding: 8px 12px; /* Smaller button for smaller screens */
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px; /* Further reduce padding for very small screens */
+    max-width: 95%; /* Nearly full width on extra small screens */
+    width: 95%;
+  }
+
+  .modal-content h3,
+  .modal-content h4 {
+    font-size: 1rem; /* Smaller font for headings */
+  }
+
+  .modal-content ul {
+    padding-left: 15px; /* Adjust list padding for smaller screens */
+  }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+  0% { transform: translateY(-20px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.7); }
+  100% { transform: scale(1); }
+}

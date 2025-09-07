@@ -1,0 +1,146 @@
+/* General Styles */
+.dashboard-section {
+  background-image: url('/img/language.webp'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  padding: 20px;
+  background-color: rgba(255, 255, 180, 0.8); /* Yellowish tint for vintage feel */
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  font-family: 'Press Start 2P', sans-serif; /* Pixel-inspired font */
+}
+
+/* Dashboard Title */
+.dashboard-title {
+  font-size: 28px;
+  color: #F7D358; /* Soft yellow */
+  text-shadow: 2px 2px 0px #333, -1px -1px 0px #666; /* Retro-style shadow */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  color: #f59b00;
+}
+
+/* Language Progress Section */
+.language-section {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 20px;
+  background-color: rgba(50, 50, 50, 0.9);
+  border: 3px solid #f7d358;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.language-section h3 {
+  color: #FFD700; /* Gold-like color */
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* Progress Bars */
+.progress-bar-background,
+.lesson-progress-bar-background {
+  background-color: #333;
+  border-radius: 10px;
+  height: 8px;
+  margin-top: 8px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.progress-bar,
+.lesson-progress-bar {
+  background-color: #F7D358;
+  height: 8px;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+/* Lessons List */
+.lessons-list {
+  margin-top: 20px;
+}
+
+.lesson-item {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 0, 0.4); /* Light yellow border */
+  border-radius: 8px;
+  background-color: rgba(50, 50, 50, 0.9); /* Dark background */
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease;
+}
+
+.lesson-item:hover {
+  transform: scale(1.05);
+  background-color: rgba(50, 50, 50, 1); /* Slightly more opaque when hovered */
+}
+
+.lesson-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #f7d358;
+}
+
+.lesson-progress {
+  font-size: 14px;
+  color: #b3b3b3;
+}
+
+/* Leaderboard Section */
+.leaderboard-section {
+  width: 28%;
+  background-color: rgba(50, 50, 50, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.leaderboard-section h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #FFD700; /* Gold color */
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.leaderboard-item {
+  margin-bottom: 10px;
+  padding: 12px;
+  background-color: rgba(30, 30, 30, 0.9);
+  border: 1px solid #FFD700;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Press Start 2P', sans-serif;
+}
+
+.leaderboard-item:hover {
+  background-color: rgba(30, 30, 30, 1);
+}
+
+.leaderboard-item .username {
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.leaderboard-item .score {
+  color: #F7D358;
+  font-size: 16px;
+}
+
+/* Retro Font for the Whole App */
+body, button, input, .dashboard-title, .language-section h3, .lesson-title, .leaderboard-section h3, .leaderboard-item .username {
+  font-family: 'Press Start 2P', sans-serif;
+  text-transform: uppercase;
+}

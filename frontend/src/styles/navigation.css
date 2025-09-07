@@ -1,0 +1,73 @@
+/* Floating Action Button (FAB) */
+.fab-button {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #d2a119;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.fab-button:hover {
+  background-color: #d2a119;
+}
+
+.fab-start {
+  font-size: 1.2rem;
+}
+
+.fab-settings {
+  font-size: 1.2rem;
+}
+
+.fab-navigation {
+  font-size: 1.2rem;
+}
+
+/* Icon Text for FAB */
+.icon-text {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+/* App Bar Styling */
+.app-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #000000;
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Icon Button Styling */
+.icon-button {
+  color: #d2a119;
+  font-size: 1.5rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  color: #d2a119;
+}

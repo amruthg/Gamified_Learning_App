@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asteroid Quiz Game</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+      }
+      canvas {
+        background-color: black;
+      }
+      #question {
+        position: absolute;
+        top: 20px;
+        width: 100%;
+        font-size: 24px;
+        color: white;
+      }
+      #score {
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        font-size: 20px;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="question">Question will appear here</div>
+    <div id="score">Score: 0</div>
+    <canvas></canvas>
+    <script>
+      const canvas = document.querySelector("canvas");
+      const c = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const questions = [
+        {
+          question: "What is the capital of France?",
+          options: ["Paris", "Berlin", "Rome", "Madrid"],
+          answer: "Paris",
+        },
+        {
+          question: "What is 5 + 7?",
+          options: ["10", "11", "12", "13"],
+          answer: "12",
+        },
+        {
+          question: "What color is the sky?",
+          options: ["Blue", "Green", "Red", "Yellow"],
+          answer: "Blue",
+        },
+        {
+          question: "Which planet is known as the Red Planet?",
+          options: ["Mars", "Earth", "Jupiter", "Saturn"],
+          answer: "Mars",
+        },
+        {
+          question: "What is the largest ocean on Earth?",
+          options: ["Atlantic", "Indian", "Arctic", "Pacific"],
+          answer: "Pacific",
+        },
+      ];
+
+      let currentQuestionIndex = 0;
+      let score = 0;
+      let projectiles = [];
+      let asteroids = [];
+      let player;
+      const PROJECTILE_SPEED = 4;
+      const SPEED = 3;
+      const ROTATIONAL_SPEED = 0.05;
+
+      class Player {
+        constructor(position) {
+          this.position = position;
+          this.rotation = 0;
+          this.velocity = { x: 0, y: 0 };
+        }
+        draw() {
+          c.save();
+          c.translate(this.position.x, this.position.y);
+          c.rotate(this.rotation);
+          c.fillStyle = "red";
+          c.beginPath();
+          c.moveTo(0, -10);
+          c.lineTo(-5, 10);
+          c.lineTo(5, 10);
+          c.closePath();
+          c.fill();
+          c.restore();
+        }
+        update() {
+          this.draw();
+          this.position.x += this.velocity.x;
+          this.position.y += this.velocity.y;
+          this.velocity.x *= 0.98; // Friction
+          this.velocity.y *= 0.98;
+        }
+      }
+
+      class Projectile {
+        constructor(position, velocity) {
+          this.position = { ...position };
+          this.velocity = velocity;
+          this.radius = 5;
+        }
+        draw() {
+          c.beginPath();
+          c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+          c.fillStyle = "white";
+          c.fill();
+        }
+        update() {
+          this.draw();
+          this.position.x += this.velocity.x;
+          this.position.y += this.velocity.y;
+        }
+      }
+
+      class Asteroid {
+        constructor(position, velocity, text) {
+          this.position = position;
+          this.velocity = velocity;
+          this.radius = 40;
+          this.text = text;
+        }
+        draw() {
+          c.beginPath();
+          c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+          c.strokeStyle = "white";
+          c.stroke();
+          c.closePath();
+          c.fillStyle = "white";
+          c.fillText(this.text, this.position.x - 15, this.position.y + 5);
+        }
+        update() {
+          this.draw();
+          this.position.x += this.velocity.x;
+          this.position.y += this.velocity.y;
+        }
+      }
+
+      function spawnAsteroids() {
+        asteroids = [];
+        const options = questions[currentQuestionIndex].options;
+        options.forEach((option, i) => {
+          const angle = (i * Math.PI) / 2;
+          const x = canvas.width / 2 + Math.cos(angle) * 150;
+          const y = canvas.height / 2 + Math.sin(angle) * 150;
+          const vx = (Math.random() - 0.5) * 2;
+          const vy = (Math.random() - 0.5) * 2;
+          asteroids.push(new Asteroid({ x, y }, { x: vx, y: vy }, option));
+        });
+      }
+
+      function displayQuestion() {
+        document.getElementById("question").textContent =
+          questions[currentQuestionIndex].question;
+      }
+
+      function updateScoreDisplay() {
+        document.getElementById("score").textContent = `Score: ${score}`;
+      }
+
+      function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= questions.length) {
+          alert(`Game Over! Your final score is ${score}`);
+          window.location.reload();
+        } else {
+          spawnAsteroids();
+          displayQuestion();
+        }
+      }
+
+      function checkAnswer(option) {
+        const correctAnswer = questions[currentQuestionIndex].answer;
+        if (option === correctAnswer) {
+          score += 100;
+          alert("Correct!");
+        } else {
+          alert("Wrong Answer!");
+        }
+        updateScoreDisplay();
+        nextQuestion();
+      }
+
+      function animate() {
+        c.clearRect(0, 0, canvas.width, canvas.height);
+        player.update();
+
+        projectiles.forEach((projectile, i) => {
+          projectile.update();
+          if (
+            projectile.position.x < 0 ||
+            projectile.position.x > canvas.width ||
+            projectile.position.y < 0 ||
+            projectile.position.y > canvas.height
+          ) {
+            projectiles.splice(i, 1);
+          }
+        });
+
+        asteroids.forEach((asteroid, i) => {
+          asteroid.update();
+          projectiles.forEach((projectile, j) => {
+            const dist = Math.hypot(
+              projectile.position.x - asteroid.position.x,
+              projectile.position.y - asteroid.position.y
+            );
+            if (dist < asteroid.radius + projectile.radius) {
+              checkAnswer(asteroid.text);
+              projectiles.splice(j, 1);
+              asteroids.splice(i, 1);
+            }
+          });
+        });
+
+        requestAnimationFrame(animate);
+      }
+
+      function init() {
+        player = new Player({ x: canvas.width / 2, y: canvas.height / 2 });
+        displayQuestion();
+        updateScoreDisplay();
+        spawnAsteroids();
+        animate();
+      }
+
+      window.addEventListener("keydown", (event) => {
+        switch (event.code) {
+          case "KeyW":
+            player.velocity.x = Math.cos(player.rotation) * SPEED;
+            player.velocity.y = Math.sin(player.rotation) * SPEED;
+            break;
+          case "KeyA":
+            player.rotation -= ROTATIONAL_SPEED;
+            break;
+          case "KeyD":
+            player.rotation += ROTATIONAL_SPEED;
+            break;
+          case "Space":
+            const velocity = {
+              x: Math.cos(player.rotation) * PROJECTILE_SPEED,
+              y: Math.sin(player.rotation) * PROJECTILE_SPEED,
+            };
+            projectiles.push(
+              new Projectile(
+                { x: player.position.x, y: player.position.y },
+                velocity
+              )
+            );
+            break;
+        }
+      });
+
+      init();
+    </script>
+  </body>
+</html>

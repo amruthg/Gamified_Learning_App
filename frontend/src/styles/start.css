@@ -1,0 +1,80 @@
+/* Apply the background image to the entire page */
+body {
+  margin: 0;
+  /* background-color: #338de6;  */
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
+  
+  /* color : #31473A */
+  /* color: #ca6702; */
+  color: white;
+
+}
+
+.start-container {
+  background-image: url('/img/start-image.png'); /* Replace with your image path */
+  background-size: cover;      /* Make sure the image covers the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent tiling */
+  min-height: 100vh;           /* Ensure it takes the full height of the viewport */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* color: white;                Set text color to white for readability */
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: white;
+
+  text-align: center;
+  padding: 20px;
+}
+
+/* Make content more readable by adding a background color */
+.start-content {
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.start-title {
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: wheat;
+
+  margin-top: 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.start-subtitle {
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: wheat;
+
+  margin: 16px 0 32px;
+  font-size: 1.25rem;
+}
+
+.get-started-button {
+  font-family: 'Press Start 2P',cursive , Arial, sans-serif;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  /* color: white; */
+  
+  /* color : #31473A; */
+  /* color: #ca6702; */
+  color: wheat;
+
+  background-color: #1976d2;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.get-started-button:hover {
+  background-color: #1565c0;
+}

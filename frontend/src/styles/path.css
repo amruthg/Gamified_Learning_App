@@ -1,0 +1,168 @@
+/* Scoped CSS for Lecture Path Page */
+.lecture-path-page {
+  background-image: url('/img/dashboard.png'); /* Make sure the path is correct */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.path-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.lecture-buttons-container {
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  color: #cb1dcd;
+  margin-top: 80px;
+}
+
+.lecture-button {
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  width: 280px;
+  height: 100px;
+  font-size: 1.3rem;
+  color: #fff;
+  background-color: #d2a119;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s, transform 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  overflow-wrap: break-word;
+}
+
+.lecture-button:hover {
+  background-color: #c29117;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.lecture-button:disabled {
+  background-color: #8B4513;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Individual styles for each level */
+.lecture-button.beginner {
+  background-color: #28a745;
+}
+
+.lecture-button.intermediate {
+  background-color: #ffc107;
+}
+
+.lecture-button.expert {
+  background-color: #dc3545;
+}
+
+.progress-line {
+  width: 140px;
+  height: 4px;
+  background-color: #8B4513;
+  border-radius: 2px;
+  transition: background-color 0.3s ease;
+}
+
+.progress-line.completed {
+  background-color: #d2a119;
+}
+
+.drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: slideUp 0.5s ease-out;
+}
+
+.drawer-content {
+  text-align: center;
+  padding: 16px;
+  max-width: 500px;
+}
+
+.drawer-content h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.start-lecture-button {
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  font-size: 1rem;
+  color: white;
+  background-color: #d2a119;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.start-lecture-button:hover {
+  background-color: #c29117;
+  transform: scale(1.05);
+}
+
+.drawer-close-button {
+  font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: #d2a119;
+  background-color: transparent;
+  border: 1px solid #d2a119;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.drawer-close-button:hover {
+  background-color: #d2a119;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
