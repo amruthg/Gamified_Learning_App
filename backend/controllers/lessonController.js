@@ -1,7 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import Lesson from '../model/lessonModel.js';
 
-const genAI = new GoogleGenerativeAI('AIzaSyCTnhiYH59608ExLr0ak4RvSq_dhzLxka8');
+const genAI = new GoogleGenerativeAI('--type ypur API key--');
 const lessonLevels = ['Beginner', 'Intermediate', 'Advanced'];
 
 // Function to generate a lesson for a specific level
